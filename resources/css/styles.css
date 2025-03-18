@@ -1,0 +1,95 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    background-color: black !important;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Smooth underline animation */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white; /* White underline */
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    background-color: black !important;
+    border: none;
+}
+
+/* Dropdown Links */
+.dropdown-menu .dropdown-item {
+    color: white !important;
+    transition: 0.3s;
+}
+
+/* Dropdown Hover Effect */
+.dropdown-menu .dropdown-item:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Show dropdown on hover */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+/* Custom Hamburger Menu */
+.navbar-toggler {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px;
+    outline: none;
+}
+
+.toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* When menu is open, animate bars into an 'X' */
+.navbar-toggler.active .toggler-icon:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.active .toggler-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.active .toggler-icon:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Full black background for mobile menu */
+.navbar-collapse {
+    background-color: black;
+    padding: 20px;
+}
