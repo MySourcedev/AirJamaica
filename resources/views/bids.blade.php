@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruitment -Air Jamaica Virtual</title>
+    <title>Bids -Air Jamaica Virtual</title>
 
     <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
 
     /* NAVBAR STYLING START */
     .navbar {
-        background-color: black;
+        background-color: black !important;
         position: fixed;
         /* Fixes the navbar at the top */
         top: 0;
@@ -44,7 +44,7 @@
 
     /* Navbar links */
     .navbar-nav .nav-link {
-        color: white;
+        color: white !important;
         font-weight: 500;
         padding: 10px 15px;
         position: relative;
@@ -71,20 +71,20 @@
 
     /* Dropdown Styling */
     .dropdown-menu {
-        background-color: black;
+        background-color: black !important;
         border: none;
     }
 
     /* Dropdown Links */
     .dropdown-menu .dropdown-item {
-        color: white;
+        color: white !important;
         transition: 0.3s;
     }
 
     /* Dropdown Hover Effect */
     .dropdown-menu .dropdown-item:hover {
-        background-color: white;
-        color: black;
+        background-color: white !important;
+        color: black !important;
     }
 
     /* Show dropdown on hover */
@@ -132,15 +132,17 @@
 
 </head>
 
+
 <body>
 
     <!-- Navbar start -->
-     <x-navbar></x-navbar>
+    <x-navbar></x-navbar>
     <!-- Navbar end -->
 
 
 
-    
+    <!-- Footer start -->
+    <!-- Footer end -->
 
 
     <!-- Bootstrap JS -->

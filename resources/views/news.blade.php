@@ -16,9 +16,7 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
 
-</head>
-
-<style>
+    <style>
     /* Full black background */
     body {
         background-color: black;
@@ -29,7 +27,7 @@
 
     /* Navbar */
     .navbar {
-        background-color: black !important;
+        background-color: black;
         position: fixed;
         /* Fixes the navbar at the top */
         top: 0;
@@ -46,7 +44,7 @@
 
     /* Navbar links */
     .navbar-nav .nav-link {
-        color: white !important;
+        color: white;
         font-weight: 500;
         padding: 10px 15px;
         position: relative;
@@ -73,20 +71,20 @@
 
     /* Dropdown Styling */
     .dropdown-menu {
-        background-color: black !important;
+        background-color: black;
         border: none;
     }
 
     /* Dropdown Links */
     .dropdown-menu .dropdown-item {
-        color: white !important;
+        color: white;
         transition: 0.3s;
     }
 
     /* Dropdown Hover Effect */
     .dropdown-menu .dropdown-item:hover {
-        background-color: white !important;
-        color: black !important;
+        background-color: white;
+        color: black;
     }
 
     /* Show dropdown on hover */
@@ -229,6 +227,9 @@
 
     /* FOOTER END */
 </style>
+</head>
+
+
 
 <body>
 

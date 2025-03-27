@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration -Air Jamaica Virtual</title>
-</head>
 
-<!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -28,7 +27,7 @@
 
     /* NAVBAR STYLING START */
     .navbar {
-        background-color: black !important;
+        background-color: black;
         position: fixed;
         /* Fixes the navbar at the top */
         top: 0;
@@ -45,7 +44,7 @@
 
     /* Navbar links */
     .navbar-nav .nav-link {
-        color: white !important;
+        color: white;
         font-weight: 500;
         padding: 10px 15px;
         position: relative;
@@ -72,20 +71,20 @@
 
     /* Dropdown Styling */
     .dropdown-menu {
-        background-color: black !important;
+        background-color: black;
         border: none;
     }
 
     /* Dropdown Links */
     .dropdown-menu .dropdown-item {
-        color: white !important;
+        color: white;
         transition: 0.3s;
     }
 
     /* Dropdown Hover Effect */
     .dropdown-menu .dropdown-item:hover {
-        background-color: white !important;
-        color: black !important;
+        background-color: white;
+        color: black;
     }
 
     /* Show dropdown on hover */
@@ -130,7 +129,7 @@
         padding: 20px;
     }
 
-    
+
 
     .registration-container {
         background-color: #1a1a1a;
@@ -224,6 +223,9 @@
 
     /* FOOTER END */
 </style>
+</head>
+
+
 
 <body>
 
@@ -239,52 +241,53 @@
                 <div class="registration-container">
                     <h2 class="text-center mb-4">Create Pilot Account</h2>
                     <p class="text-center">Welcome! Please remember to add your VATSIM ID when registering.</p>
-                    <form>
+                    <form method="post" action="{{ route("store") }}">
+                        @csrf
                         <div class="mb-3">
                             <label for="firstName" class="form-label">First Name *</label>
-                            <input type="text" class="form-control" id="firstName" required>
+                            <input name="f_name" type="text" class="form-control" id="firstName" required>
                         </div>
                         <div class="mb-3">
                             <label for="lastName" class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" id="lastName" required>
+                            <input name="l_name" type="text" class="form-control" id="lastName" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail Address</label>
-                            <input type="email" class="form-control" id="email">
+                            <input name="email" type="email" class="form-control" id="email">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input name="password" type="password" class="form-control" id="password">
                         </div>
                         <div class="mb-3">
                             <label for="confirmPassword" class="form-label">Re-enter Password</label>
-                            <input type="password" class="form-control" id="confirmPassword">
+                            <input name="confirm_password" type="password" class="form-control" id="confirmPassword">
                         </div>
                         <div class="mb-3">
                             <label for="airline" class="form-label">Select Airline *</label>
-                            <select class="form-select" id="airline" required>
+                            <select name="airline" class="form-select" id="airline" required>
                                 <option value="AJM">AJM - Air Jamaica</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="hub" class="form-label">Select Hub *</label>
-                            <select class="form-select" id="hub" required>
+                            <select name="hub" class="form-select" id="hub" required>
                                 <option value="MKJP">MKJP - Norman Manley International</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="location" class="form-label">Location *</label>
-                            <select class="form-select" id="location" required>
+                            <select name="location" class="form-select" id="location" required>
                                 <option value="Afghanistan">Afghanistan</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="vatsimID" class="form-label">VATSIM ID *</label>
-                            <input type="text" class="form-control" id="vatsimID" required>
+                            <input name="vatsimID" type="text" class="form-control" id="vatsimID" required>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="terms" required>
-                            <label class="form-check-label" for="terms">I agree to the <a href="#" class="support-link">terms and conditions</a> of Air Jamaica Virtual Airlines and Cargo.</label>
+                            <label name="terms" class="form-check-label" for="terms">I agree to the <a href="#" class="support-link">terms and conditions</a> of Air Jamaica Virtual Airlines and Cargo.</label>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Register</button>

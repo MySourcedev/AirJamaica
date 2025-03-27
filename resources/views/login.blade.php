@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login- Air Jamaica Virtual</title>
-</head>
 
-<!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -28,7 +27,7 @@
 
     /* NAVBAR STYLING START */
     .navbar {
-        background-color: black !important;
+        background-color: black;
         position: fixed;
         /* Fixes the navbar at the top */
         top: 0;
@@ -45,7 +44,7 @@
 
     /* Navbar links */
     .navbar-nav .nav-link {
-        color: white !important;
+        color: white;
         font-weight: 500;
         padding: 10px 15px;
         position: relative;
@@ -72,7 +71,7 @@
 
     /* Dropdown Styling */
     .dropdown-menu {
-        background-color: black !important;
+        background-color: black;
         border: none;
     }
 
@@ -84,7 +83,7 @@
 
     /* Dropdown Hover Effect */
     .dropdown-menu .dropdown-item:hover {
-        background-color: white !important;
+        background-color: white;
         color: black !important;
     }
 
@@ -148,14 +147,14 @@
 
     .form-control {
         background-color: #333;
-        border: 1px solid #555 !important;
+        border: 1px solid #555;
         color: #fff;
     }
 
     .form-control:focus {
         background-color: #444;
         color: #fff;
-        border-color: #007bff !important;
+        border-color: #007bff;
         box-shadow: none;
     }
 
@@ -186,12 +185,12 @@
 
     .form-check-input {
         background-color: #333;
-        border: 1px solid #555 !important;
+        border: 1px solid #555;
     }
 
     .form-check-input:checked {
         background-color: #007bff;
-        border-color: #007bff !important;
+        border-color: #007bff;
     }
 
     /* FOOTER START */
@@ -229,6 +228,9 @@
 
     /* FOOTER END */
 </style>
+</head>
+
+
 
 <body>
     <!-- Navbar start -->

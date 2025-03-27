@@ -273,7 +273,7 @@
         }
 
         .text-muted {
-            color: #aaa !important;
+            color: #aaa;
         }
 
         .lead {
@@ -330,7 +330,7 @@
         }
 
         .text-muted {
-            color: #aaa !important;
+            color: #aaa;
         }
 
         /* FOOTER START */
@@ -511,6 +511,7 @@
             </div>
         </div>
     </section>
+    
     <!-- Greased Landings Section -->
     <section class="greased-landings py-5 bg-black text-white">
         <div class="container">
