@@ -10,4 +10,31 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+/* Custom styling for AIRMail interface */
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: #333;
+}
 
+.nav-link.active {
+    background-color: #e9ecef;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+textarea {
+    min-height: 300px;
+    resize: vertical;
+}

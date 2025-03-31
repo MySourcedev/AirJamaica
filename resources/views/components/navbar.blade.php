@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <!-- <img src="logo.png" alt="Logo" width="100"> -->
             <img src="{{ asset('images/logo2.png') }}" alt="Logo" width="150">
 
@@ -42,7 +42,7 @@
                         Recruitment
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('recruitment')}}">Joining Procedure</a></li>
+                        <li><a class="dropdown-item" href="{{ route('joiningprocedure') }}">Joining Procedure</a></li>
                     </ul>
                 </li>
                 <!-- Dropdown 2 end-->

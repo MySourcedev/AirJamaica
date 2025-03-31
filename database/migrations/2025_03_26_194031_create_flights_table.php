@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('flight_number');
-            $table->timestamp('dpt_time');
-            $table->timestamp('arr_time');
+            $table->timestamp('dpt_time')->nullable();
+            $table->timestamp('arr_time')->nullable();
+            $table->string('flight_time');
             $table->integer('fuel_lbs');
             $table->integer('flight_route');
             $table->string('aircraft');
             $table->string('airline');
-            $table->string('from');
-            $table->string('to');
+            $table->foreignId('dpt_airport')->constrained('airport')->cascadeOnDelete();
+            $table->foreignId('arr_airport')->constrained('airport')->cascadeOnDelete();
+            $table->integer('gross_revenue')->nullable();
             $table->timestamps();
         });
     }

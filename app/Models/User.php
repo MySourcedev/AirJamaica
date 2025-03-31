@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,10 +22,13 @@ class User extends Authenticatable
         'f_name',
         'l_name',
         'password',
-        'VATSIM ID',
+        'VATSIM_ID',
         'hub',
+        'airline',
         'location',
         'email',
+        'Background',
+        'Avatar'
     ];
 
     /**
@@ -48,5 +52,27 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function flights() {
+        return $this->hasMany(Flights::class);
+    }
+    public function mail(){
+        return $this->hasMany(Mail::class);
+    }
+    public function pirep(){
+        return $this->hasMany(Pirep::class);
+    }
+    public function airline(){
+        return $this->belongsTo(Airline::class);
+    }
+    public function hub_transfer(){
+        return $this->hasMany(HubTransfer::class);
+    }
+    public function leave_of_absence(){
+        return $this->hasMany(LeaveOfAbsence::class);
+    }
+    public function airport(){
+        return $this->hasOne(Airport::class);
     }
 }

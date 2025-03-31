@@ -8,36 +8,30 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function register(){
-        return view("registration");
-    }
-    public function store(Request $request){
-        $validated = $request->validate([]);
-        User::create($validated);
-        return redirect()->route("profile");
-    }
-
     public function reqlogin(){
-        return view("login");
+        return view("auth.login");
     }
-    public function login(Request $request){
+    public function login(Request $request){    
         $validated = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required',
+            'VATSIM_ID_Email' => 'required|string',
+            'password' => 'required|string',
         ]);
-        try{
-            User::findOrFail($validated);
-        }catch(\Exception $e){
-            return redirect()->back()->with('error',$e->getMessage());
+        
+        try {
+            $field = filter_var($validated['VATSIM_ID_Email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'VATSIM_ID';
+            
+            if (Auth::attempt([$field => $validated['VATSIM_ID_Email'], 'password' => $validated['password']])) {
+                $request->session()->regenerate();
+                return redirect()->route("profile", ["user"=> Auth::user()->id]);
+            }
+            return back()->withErrors(['auth' => 'Invalid credentials'])->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
         }
-        $request->session()->regenerate();
-
-        return redirect()->route("profile");
     }
     public function logout(){
         Auth::logout();
         request()->session()->invalidate();
         return redirect()->route("home");
     }
-
 }
