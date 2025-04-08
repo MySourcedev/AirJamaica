@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 use App\Models\User;
+use App\Models\Awards;
+
 
 return new class extends Migration
 {
@@ -13,13 +14,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('award_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('to')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('from')->constrained('users')->cascadeOnDelete();
-            $table->string('subject');
-            $table->string('message');
-            $table->timestamp('read_at')->nullable();
+            $table->foreignIdFor(User::class)->constrainted()->cascadeOnDelete();
+            $table->foreignIdFor(Awards::class)->constrainted()->cascadeOnUpdate();
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('award_user');
     }
 };

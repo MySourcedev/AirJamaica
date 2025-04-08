@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Models\User;
+use App\Models\Rating;
 
 return new class extends Migration
 {
@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('to')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('from')->constrained('users')->cascadeOnDelete();
-            $table->string('subject');
-            $table->string('message');
-            $table->timestamp('read_at')->nullable();
+            $table->foreignIdFor(Rating::class)->constrained()->cascadeOnDelete();
+            $table->integer('rating');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('ratings');
     }
 };

@@ -264,19 +264,19 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" value="Clayton" readonly>
+                        <input type="text" class="form-control" value="{{ Auth::user()->f_name }}" readonly>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" value="Clarke" readonly>
+                        <input type="text" class="form-control" value="{{Auth::user()->l_name}}" readonly>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" value="electricclay2000@yahoo.com" readonly>
+                        <input type="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Pilot ID</label>
-                        <input type="text" class="form-control" value="AJM1167" readonly>
+                        <input type="text" class="form-control" value="{{ Auth::user()->VATSIM_ID }}" readonly>
                     </div>
                 </div>
             </div>
@@ -286,110 +286,38 @@
                 <h4 class="mb-4"><i class="fas fa-info-circle me-2"></i>LoA Information</h4>
                 <div class="alert alert-dark mb-4">
                     <i class="fas fa-exclamation-circle me-2"></i>The LoA starts on submission date and ends on your selected date (maximum duration applies). After this period, standard inactivity policies will resume.
-                </div>
-
-                <form action="{{ route('store.leaveofabsence') }}" method="post">
-    @csrf
-    <div class="row g-3">
-        <div class="col-md-6">
-            <label class="form-label">Start Date</label>
-            <input name="start_date" type="date" class="form-control" value="2025-03-29" readonly>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">End Date</label>
-            <input name="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" required>
-            @error('end_date')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="col-12">
-            <label class="form-label">Reason for Leave</label>
-            <textarea name="reason" class="form-control @error('reason') is-invalid @enderror" rows="3" placeholder="Please specify your reason..." required></textarea>
-            @error('reason')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-success px-4 py-2">
-            <i class="fas fa-paper-plane me-2"></i>SUBMIT REQUEST
-        </button>
-    </div>
-</form>
             </div>
-
-            <!-- Submit Button -->
         </div>
-
-        <!-- Footer -->
-        <div class="foote text-center py-3">
-            © 2025 Air Jamaica Virtual Airlines and Cargo - All rights reserved
-        </div>
-
-
-        <!-- FOOTER START -->
-        <footer class="footer py-4 bg-black text-white">
-            <div class="container">
-                <div class="row align-items-center">
-                    <!-- Social Media Links -->
-                    <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                        <h5 class="mb-3">Follow Us</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a href="https://facebook.com" target="_blank" class="text-white text-decoration-none">
-                                    <i class="fab fa-facebook fa-2x"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://twitter.com" target="_blank" class="text-white text-decoration-none">
-                                    <i class="fab fa-twitter fa-2x"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://instagram.com" target="_blank" class="text-white text-decoration-none">
-                                    <i class="fab fa-instagram fa-2x"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="https://linkedin.com" target="_blank" class="text-white text-decoration-none">
-                                    <i class="fab fa-linkedin fa-2x"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact Email -->
-                    <div class="col-md-4 text-center mb-3 mb-md-0">
-                        <p class="mb-0">
-                            <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:hr_depk@airjamaicavirtualairlinesandcargo.org" class="text-white text-decoration-none">
-                                hr_depk@airjamaicavirtualairlinesandcargo.org
-                            </a>
-                        </p>
-                    </div>
-
-                    <!-- Copyright -->
-                    <div class="col-md-4 text-center text-md-end">
-                        <p class="mb-0">
-                            Copyright © 2025 - Air Jamaica Virtual Powered by phpVMS
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- FOOTER END -->
     </div>
-
-
-
-
-
-
-
-
-
-
-    <!-- Bootstrap JS -->
+    <form action="{{ route('store.leaveofabsence') }}" method="post">
+        @csrf
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Start Date</label>
+                <input name="start_date" type="date" class="form-control" value="2025-03-29" readonly>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">End Date</label>
+                <input name="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" required>
+                @error('end_date')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-12">
+                <label class="form-label">Reason for Leave</label>
+                <textarea name="reason" class="form-control @error('reason') is-invalid @enderror" rows="3" placeholder="Please specify your reason..." required></textarea>
+                @error('reason')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-success px-4 py-2">
+                <i class="fas fa-paper-plane me-2"></i>SUBMIT REQUEST
+            </button>
+        </div>
+    </form>        
+    <x-footer></x-footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JavaScript for Hamburger Animation -->

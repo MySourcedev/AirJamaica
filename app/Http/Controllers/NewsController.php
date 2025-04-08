@@ -31,7 +31,7 @@ class NewsController extends Controller
             "subject" => "required|string|max:255",
             "content" => "required|string",
             "featured_image" => "nullable|image|max:2048",
-            "published" => "nullable|boolean"
+            "published" => "nullable"
         ]);
 
         // Generate slug if not provided

@@ -10,13 +10,14 @@ class GalleryController extends Controller
 {
     public function index() {
         $galleries = Gallery::paginate(10);
-        return view("gallery.index",compact("galleries"));
+        return view("public.screenshot.index",["screenshots" => $galleries]);
     }
     public function show(Gallery $gallery) {
-        return view("gallery.show",compact("gallery"));
+        $gallery->increment("views");
+        return view("public.screenshot.show",["screenshot"=> $gallery]);
     }
     public function create() {
-        return view("gallery.edit-create");
+        return view("public.screenshot.edit-create");
     }
     public function store(Request $request) {
         $validated = $request->validate([
@@ -32,21 +33,21 @@ class GalleryController extends Controller
             $validated['image_url'] = $path;
         }
         Gallery::create($validated);
-        return redirect()->route("gallery.index")->with("success","You have successfully created a screenshot");
+        return redirect()->route("public.screenshot.index")->with("success","You have successfully created a screenshot");
     }
 
     public function edit(Gallery $gallery) {
-        return view("gallery.edit-create",compact("gallery"));
+        return view("public.screenshot.edit-create",['screenshot' => $gallery]);
     }
     public function update(Request $request, Gallery $gallery) {
         $validated = $request->validate([
             "description"=> "required",
         ]);
         $gallery->update($validated);
-        return redirect()->route("gallery.index")->with("success","You have successfully updated the screenshot's description");
+        return redirect()->route("public.screenshot.index")->with("success","You have successfully updated the screenshot's description");
     }
     public function destroy(Gallery $gallery){
         $gallery->delete();
-        return redirect()->route("gallery.index")->with("success","You have successfully deleted the screenshot");
+        return redirect()->route("public.screenshot.index")->with("success","You have successfully deleted the screenshot");
     }
 }

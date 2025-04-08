@@ -75,4 +75,9 @@ class User extends Authenticatable
     public function airport(){
         return $this->hasOne(Airport::class);
     }
+    public function awards(){
+        return $this->hasMany(Awards::class);
+    }
+
+    
 }

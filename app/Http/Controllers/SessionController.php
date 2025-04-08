@@ -22,6 +22,7 @@ class SessionController extends Controller
             
             if (Auth::attempt([$field => $validated['VATSIM_ID_Email'], 'password' => $validated['password']])) {
                 $request->session()->regenerate();
+                User::findOrFail(Auth::user()->id)->update(['ip' => $request->ip()]);
                 return redirect()->route("profile", ["user"=> Auth::user()->id]);
             }
             return back()->withErrors(['auth' => 'Invalid credentials'])->withInput();

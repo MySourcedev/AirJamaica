@@ -435,7 +435,7 @@
 
             <!-- Action Buttons -->
             <div class="btn-action-group mt-4">
-                <a href="#" class="btn btn-ghost btn-action">
+                <a href="{{ route('messages.index') }}" class="btn btn-ghost btn-action">
                     <i class="fas fa-envelope me-2"></i>View Air Mail
                 </a>
                 <a href="{{ url('/edit/' . $user->id) }} " class="btn btn-ghost btn-action">

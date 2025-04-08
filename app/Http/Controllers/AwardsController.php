@@ -7,43 +7,33 @@ use Illuminate\Http\Request;
 
 class AwardsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $awards = Awards::orderBy("created_at","desc")->paginate(10);
+        return view("admin.awards.index", compact("awards"));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function create(){
+        return view("admin.awards.edit-create");
+    }
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([]);
+        $awards = Awards::create($validated);
+        return redirect()->route("admin.awards.index")->with("success","");
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Awards $awards)
-    {
-        //
+    public function edit(Awards $awards){
+        return view("admin.awards.edit-create", compact("awards"));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Awards $awards)
     {
-        //
+        $validated = $request->validate([]);
+        $awards->update($validated);
+        return redirect()->route("admin.awards.index")->with("success","");
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Awards $awards)
     {
-        //
+        $awards->delete();
+        return redirect()->route("admin.awards.index")->with("success","");
     }
 }

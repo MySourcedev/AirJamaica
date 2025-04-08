@@ -20,4 +20,7 @@ class Gallery extends Model
     public function comment(){
         return $this->hasMany(GalleryComment::class);
     }
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
 }

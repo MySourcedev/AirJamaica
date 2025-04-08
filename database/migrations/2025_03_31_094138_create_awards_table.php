@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('awards', function (Blueprint $table) {
             $table->id();
+            $table->string('Title');
+            $table->text('description');
+            $table->string('image_url');
             $table->timestamps();
         });
     }

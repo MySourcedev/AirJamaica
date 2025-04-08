@@ -31,7 +31,8 @@ class UserController extends Controller
             'airline' => 'required',
             'hub' => 'required',
             'location' => 'required',
-            'terms' => 'accepted'
+            'terms' => 'accepted',
+            'ip' => $request->ip(),
         ]);
         try{
             unset($validated['terms']);

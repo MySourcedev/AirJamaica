@@ -52,12 +52,12 @@
 
                 <!-- Dropdown 2 start-->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{route('pilot-center')}}" id="navbarDropdown" role="button">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button">
                         Pilot Center
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('pilot-center')}}">Rooster</a></li>
-                        <li><a class="dropdown-item" href="{{route('pilot-center')}}">Screenshot Gallery</a></li>
+                        <li><a class="dropdown-item" href="">Rooster</a></li>
+                        <li><a class="dropdown-item" href="">Screenshot Gallery</a></li>
                     </ul>
                 </li>
                 <!-- Dropdown 2 end-->
@@ -68,9 +68,21 @@
                 <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact Us</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="{{route('patners')}}">Patners</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Login</a></li>
-
+                @auth
+                    @can('isAdmin', App\Models\User::class)
+                        <li><a href="{{ route('admin.dashboard') }}">Admin Center</a></li>
+                    @endcan
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link">Log out</button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

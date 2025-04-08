@@ -15,6 +15,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\AwardsController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -120,11 +121,12 @@ Route::controller(ResetPasswordController::class)->group(function (){
 
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'index')->name('news.index');
-    Route::get('/news/{slug}', 'show')->name('news.show');
+    Route::get('/news/create','create')->name("news.create");
     
-    Route::view('/news/create','home');
     Route::post('/news', 'store')->name('news.store');
     
+
+    Route::get('/news/{slug}', 'show')->name('news.show');
     Route::get('/news/{news}/edit', 'edit')->name('news.edit');
     Route::put('/news/{news}', 'update')->name('news.update');
     Route::delete('/news/{news}', 'destroy')->name('news.destroy');
@@ -136,10 +138,12 @@ Route::controller(NewsController::class)->group(function () {
 Route::controller(MessagesController::class)->group(function (){
     Route::get('/messages','index')->name('messages.index');
     Route::get('/messages/create','create')->name('messages.create');
-    Route::get('/messages/edit/{message}', 'edit')->name('messages.edit');
+    Route::get('/messages/sent', 'sent')->name('messages.sent');
+    Route::get('/messages/{messages}','')->name('');
 
     Route::post('/messages/create', 'store')->name('messages.store');
-    Route::put('/messages/update/{message}','update')->name('messages.update');
+    Route::post('/messages/trix/upload', 'uploadTrixAttachment')->name('messages.trix.upload');
+    Route::delete('/messages/trix/delete/{trix}', 'deleteTrixAttachment')->name('messages.trix.delete');
 });
 
 Route::controller(AwardsController::class)->group(function (){
@@ -158,4 +162,14 @@ Route::controller(GalleryController::class)->group(function (){
 
     Route::post('/Screenshot/create', 'store')->name('screenshot.store');
     Route::put('/Screenshot/update/{new}','update')->name('screenshot.update');
+});
+
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::resource('pages', PageController::class)->except(['create','show','store']);
+    
+    // Additional routes for trash management
+    Route::get('pages/trash', [PageController::class, 'trash'])->name('pages.trash');
+    Route::post('pages/{id}/restore', [PageController::class, 'restore'])->name('pages.restore');
+    Route::delete('pages/{id}/force-delete', [PageController::class, 'forceDelete'])->name('pages.force-delete');
 });
